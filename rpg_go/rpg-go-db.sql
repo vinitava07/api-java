@@ -5,7 +5,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 create table if not exists rpg_go.user(
 
-id uuid default uuid_generate_v4() primary key,
+id numeric primary key,
 name varchar(255) UNIQUE,
 password varchar(255)
 
@@ -13,33 +13,35 @@ password varchar(255)
 
 create table if not exists rpg_go.sheet(
 
+id numeric primary key,
 name varchar(255),
 class varchar(30),
 race varchar(30),
 p_level numeric,
 spells text,
-u_sheet uuid references rpg_go.user(id)
+u_sheet numeric references rpg_go.user(id)
 
 );
 
 create table if not exists rpg_go.table_master(
 
-id uuid default uuid_generate_v4() primary key,
-name varchar(255) references rpg_go.user(name)
+master_id numeric primary key,
+user_id numeric references rpg_go.user(id)
 
 );
 
 create table if not exists rpg_go.table (
 
-id uuid default uuid_generate_v4() primary key,
+id numeric primary key,
 name varchar(255) UNIQUE,
-master uuid references rpg_go.table_master(id)
+master numeric references rpg_go.table_master(master_id)
 
 );
 
 create table if not exists rpg_go.room(
 
-room_user varchar(255) references rpg_go.user(name),
-room_table varchar(255) references rpg_go.table(name)
+room_user numeric references rpg_go.user(id),
+room_table numeric references rpg_go.table(id),
+room_sheet numeric references rpg_go.sheet(id)
 
 );
