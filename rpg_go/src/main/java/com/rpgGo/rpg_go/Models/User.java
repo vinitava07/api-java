@@ -1,5 +1,6 @@
 package com.rpgGo.rpg_go.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 
@@ -7,22 +8,42 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Entity
+@Entity(name = "User")
 @Table(name = "user", schema = "rpg_go")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    Integer id;
+    @Column(name = "id")
+    Long id;
     String name;
     String password;
 
-    @OneToMany(mappedBy = "user")
-    private List<Master> listMaster = new ArrayList<>();
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    private List<RpgTable> rpgTableList;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Room> rooms;
 
-    private User() {
+    public User() {
     }
 
-    public void setId(Integer id) {
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    public List<RpgTable> getRpgTableList() {
+        return rpgTableList;
+    }
+
+    public void setListRpgTable(List<RpgTable> rpgTableList) {
+        this.rpgTableList = rpgTableList;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -42,7 +63,7 @@ public class User {
         return password;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 }
