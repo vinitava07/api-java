@@ -1,16 +1,36 @@
 package com.rpgGo.rpg_go.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+
 import java.util.UUID;
 
+@Entity
+@Table(name = "sheet", schema = "rpg_go")
 public class Sheet {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id")
     Integer id;
     String name;
     String playerClass;
     String race;
     int playerLevel;
     String spells;
-    Integer userId;
+    @JsonIgnore
+    @ManyToOne()
+    User user;
+    @OneToOne(mappedBy = "sheet")
+    Room room;
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
 
     public Integer getId() {
         return id;
@@ -36,7 +56,4 @@ public class Sheet {
         return spells;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
 }

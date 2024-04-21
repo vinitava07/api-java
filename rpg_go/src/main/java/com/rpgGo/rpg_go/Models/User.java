@@ -1,12 +1,12 @@
 package com.rpgGo.rpg_go.Models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Entity(name = "User")
 @Table(name = "user", schema = "rpg_go")
@@ -14,17 +14,22 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
-    Long id;
+    Integer id;
     String name;
     String password;
 
-    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
     private List<RpgTable> rpgTableList;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
     private List<Room> rooms;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Sheet> sheets;
 
     public User() {
+    }
+
+    public List<Sheet> getSheets() {
+        return sheets;
     }
 
     public List<Room> getRooms() {
@@ -36,14 +41,25 @@ public class User {
     }
 
     public List<RpgTable> getRpgTableList() {
-        return rpgTableList;
+        if (this.rpgTableList != null) {
+            List<RpgTable> tmpList = new ArrayList<>();
+            RpgTable tmpTable = new RpgTable();
+            for (RpgTable table : this.rpgTableList) {
+                tmpTable.setUser(table.getUser());
+                tmpTable.setId(table.getId());
+                tmpTable.setName(table.getName());
+                tmpList.add(tmpTable);
+            }
+            return tmpList;
+        }
+        return null;
     }
 
     public void setListRpgTable(List<RpgTable> rpgTableList) {
         this.rpgTableList = rpgTableList;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -63,7 +79,8 @@ public class User {
         return password;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 }
+

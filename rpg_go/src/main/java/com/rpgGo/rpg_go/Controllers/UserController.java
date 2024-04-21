@@ -29,10 +29,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") Integer id) {
-        User user = userService.getById((id));
-        System.out.println();
-        System.out.println(user.getRpgTableList());
-        System.out.println();
+
         return ResponseEntity.status(HttpStatus.OK).body(userService.getById(id));
     }
 
@@ -47,24 +44,11 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Integer id) {
+    public ResponseEntity<?> deleteUser(@PathVariable Integer id) {
         userService.deleteById(id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-//    @PostMapping("/newMaster")
-//    public ResponseEntity<User> newMaster(@RequestParam(name = "user_id") Integer userId, @RequestBody(required = true) RpgTable rpgTable) {
-//        System.out.println("CRIANDO UM NOVO MESTRE PARA A SALA");
-//        System.out.println(userId);
-//        User userTemp = userService.getById((userId));
-//        List<RpgTable> rpgTables = new ArrayList<>();
-//        rpgTable.setUser(userTemp);
-//        rpgTables.add(rpgTable);
-//        userTemp.setListRpgTable(rpgTables);
-////        userService.save(userTemp);
-//
-//        return ResponseEntity.status(HttpStatus.OK).body(userService.save(userTemp));
-//    }
 
 
 }

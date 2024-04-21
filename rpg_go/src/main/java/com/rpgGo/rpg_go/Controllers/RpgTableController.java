@@ -1,10 +1,8 @@
 package com.rpgGo.rpg_go.Controllers;
 
-//import com.rpgGo.rpg_go.Models.Master;
 
 import com.rpgGo.rpg_go.Models.RpgTable;
 import com.rpgGo.rpg_go.Models.User;
-//import com.rpgGo.rpg_go.Repository.MasterRepository;
 import com.rpgGo.rpg_go.Repository.RpgTableRepository;
 import com.rpgGo.rpg_go.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/table")
@@ -28,20 +27,23 @@ public class RpgTableController {
         return ResponseEntity.status(HttpStatus.OK).body(tableRepository.findAll());
     }
 
-    //TODO:
-    //implement getTableById()
-    //implement updateTable to add players to table
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<RpgTable>> getTableById(@PathVariable(name = "id") Integer tableId) {
+        return ResponseEntity.status(HttpStatus.OK).body(tableRepository.findById(tableId));
+
+    }
+
     @PostMapping
     public ResponseEntity<String> createTable(@RequestParam(name = "master_id", required = true) Integer masterId, @RequestBody(required = true) RpgTable table) {
         if (userRepository.existsById(masterId)) {
             User userTemp = userRepository.getById((masterId));
+
             table.setUser(userTemp);
             tableRepository.save(table);
             return ResponseEntity.status(HttpStatus.OK).body("Mesa criada");
 
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not Found");
-
     }
 
 
