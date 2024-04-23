@@ -5,6 +5,10 @@ import com.rpgGo.rpg_go.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -13,7 +17,12 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public User save(User user) {
+    public User save(User user) throws NoSuchAlgorithmException {
+        MessageDigest m = MessageDigest.getInstance("MD5");
+        m.update(user.getPassword().getBytes(), 0, user.getPassword().length());
+
+        user.setPassword(new BigInteger(1, m.digest()).toString(16));
+
         return userRepository.save(user);
     }
 

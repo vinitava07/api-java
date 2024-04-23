@@ -7,7 +7,6 @@
     <list default="true" id="2d06324f-a728-4ad5-98ac-5e74293fb596" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Repository/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Services/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Services/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Services/UserServiceImpl.java" afterDir="false" />
     </list>
