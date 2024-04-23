@@ -1,6 +1,7 @@
 package com.rpgGo.rpg_go.Controllers;
 
 //import com.rpgGo.rpg_go.Models.Master;
+
 import com.rpgGo.rpg_go.Models.RpgTable;
 import com.rpgGo.rpg_go.Models.User;
 //import com.rpgGo.rpg_go.Repository.MasterRepository;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/user")
@@ -23,8 +25,11 @@ public class UserController {
     private RpgTableRepository rpgTableRepository;
 
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
-        return ResponseEntity.status(HttpStatus.OK).body(userService.findAll());
+    public ResponseEntity<List<User>> getAllUsers(@RequestBody String nameAdm) {
+
+        System.out.println(nameAdm);
+        return ResponseEntity.status(HttpStatus.OK).body(userService.findAll(nameAdm));
+
     }
 
     @GetMapping("/{id}")
@@ -38,6 +43,19 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<String> loginAuth(@RequestBody User user) {
+        User u;
+        u = userService.findByName(user.getName());
+        if (Objects.equals(u.getPassword(), user.getPassword())) {
+            return ResponseEntity.status(HttpStatus.OK).body("{\n\t\"authorized\": \"true\"," +
+                    "\n\t\"id\": " + u.getId() + "\n}");
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário ou senha errados");
+
+    }
+
+
     @PutMapping
     public ResponseEntity<User> updateUser(@RequestBody User user) {
         return ResponseEntity.status(HttpStatus.OK).body(userService.save(user));
@@ -48,7 +66,6 @@ public class UserController {
         userService.deleteById(id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
-
 
 
 }

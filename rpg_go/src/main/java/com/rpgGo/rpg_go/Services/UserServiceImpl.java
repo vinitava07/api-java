@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -19,7 +19,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findAll() {
-        return userRepository.findAll();
+        return null;
+    }
+
+    @Override
+    public List<User> findAll(String nameAdm) {
+        if (nameAdm.contains("vini")) {
+            return userRepository.findAll();
+        }
+        return null;
     }
 
     @Override
@@ -35,5 +43,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteById(Integer id) {
         userRepository.deleteById(id);
+    }
+
+    public User findByName(String name) {
+        return userRepository.findByName(name);
     }
 }
