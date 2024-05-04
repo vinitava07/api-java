@@ -28,7 +28,7 @@ public class SheetController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Sheet> findSheetById(@PathVariable("id") Integer sheetId) {
-        return ResponseEntity.status(HttpStatus.FOUND).body(sheetRepository.findById(sheetId).get());
+        return ResponseEntity.status(HttpStatus.OK).body(sheetRepository.findById(sheetId).get());
 
     }
 

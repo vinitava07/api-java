@@ -48,10 +48,10 @@ public class RoomController {
             room.setUser(userTemp);
             room.setRpgTable(rpgTableTemp);
             room.setSheet(sheetTemp);
-            return ResponseEntity.status(HttpStatus.OK).body(roomRepository.save(room));
+            return ResponseEntity.status(HttpStatus.CREATED).body(roomRepository.save(room));
 
         }
-        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(null);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 
     }
 

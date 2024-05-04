@@ -8,7 +8,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "sheet", schema = "rpg_go")
 public class Sheet {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
@@ -19,14 +18,29 @@ public class Sheet {
     int playerLevel;
     String spells;
     @JsonIgnore
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     User user;
+    @JsonIgnore
     @OneToOne(mappedBy = "sheet")
     Room room;
 
     public void setUser(User user) {
         this.user = user;
     }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
 
     public User getUser() {
         return user;

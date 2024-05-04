@@ -30,7 +30,7 @@ public class UserController {
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers(@RequestBody String nameAdm) {
 
-        System.out.println(nameAdm);
+//        System.out.println(nameAdm);
         return ResponseEntity.status(HttpStatus.OK).body(userService.findAll(nameAdm));
 
     }
@@ -42,31 +42,29 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) throws NoSuchAlgorithmException {
+    public ResponseEntity<User> createUser(@RequestBody(required = true) User user) throws NoSuchAlgorithmException {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> loginAuth(@RequestBody User user) throws NoSuchAlgorithmException {
+    public ResponseEntity<User> loginAuth(@RequestBody User user) throws NoSuchAlgorithmException {
         User u;
         u = userService.findByName(user.getName());
-        System.out.println("AAAAAAAAAAA " + u.getPassword());
         MessageDigest m = MessageDigest.getInstance("MD5");
         m.update(user.getPassword().getBytes(), 0, user.getPassword().length());
         user.setPassword(new BigInteger(1, m.digest()).toString(16));
 
         if (Objects.equals(u.getPassword(), user.getPassword())) {
-            return ResponseEntity.status(HttpStatus.OK).body("{\n\t\"authorized\": \"true\"," +
-                    "\n\t\"id\": " + u.getId() + "\n}");
+            return ResponseEntity.status(HttpStatus.OK).body(u);
         }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário ou senha errados");
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
 
     }
 
 
     @PutMapping
     public ResponseEntity<User> updateUser(@RequestBody User user) throws NoSuchAlgorithmException {
-        return ResponseEntity.status(HttpStatus.OK).body(userService.save(user));
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
     }
 
     @DeleteMapping("/{id}")
