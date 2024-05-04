@@ -2,7 +2,7 @@
 > API em java utilizando SpringBoot JPA e POSTGRESQL
 
 ## CRUD criado para o backend do trabalho de Dev Mobile
-O sistema consiste na criação de usuários, criação de fichas de RPG e criação de salas para conectar usuários a uma mesa
+O sistema consiste na criação de usuários, criação de fichas de RPG, criação de mesas e criação de salas para conectar usuários a uma mesa
 
 ### Modelos do banco
 
@@ -14,41 +14,91 @@ Table - ID, nome, master_id
 
 Room - ID, player_id, table_id, sheet_id
 
-### Ações
+#### AÇÕES
 
-#### User
+## USER
 
-* Criar usuário
+| Método | Endpoint        | Descrição                     |
+| ------ | --------------- | ----------------------------- |
+| GET    | `/user`         | Listar Todos os Usuários      |
+| GET    | `/user/id`      | Listar Usuário por ID         |
+| POST   | `/user`         | Criar Usuário                 |
+| POST   | `/user/login`   | Autenticar Login              |
+| PUT    | `/user`         | Alterar Senha do Usuário      |
+| DELETE | `/user/id`      | Excluir Usuário por ID        |
 
-* Buscar usuário por id
+### Corpo da Requisição para Criar Usuário
 
-* Deletar usuário
-
+```json
+{
+    "name": "Nome do Usuário",
+    "password": "Senha do Usuário"
+}
+```
 -----------------------------
-#### Ficha
+## FICHA
 
-* Criar ficha
+| Método | Endpoint           | Descrição                    |
+| ------ | ------------------ | ---------------------------- |
+| GET    | `/sheet`           | Listar Todas as Fichas       |
+| GET    | `/sheet/id`        | Listar Ficha por ID          |
+| POST   | `/sheet?user_id=xx`| Criar Ficha                  |
+| PUT    | `/sheet?user_id=xx`| Editar Ficha                  |
 
-* Buscar ficha por id
 
-* Alterar ficha
+### Parâmetros de Consulta para Criar Ficha
 
-* Deletar ficha
+- `user_id` - ID do usuário
 
+Corpo da requisição:
+
+```json
+{
+    "id": *Id do usuário em caso de PUT*,
+    "name": "Nome do Usuário",
+    "playerClass": "Classe do Jogador",
+    "race": "Raça do Jogador",
+    "playerLevel": "Nível do Jogador, INT",
+    "spells": "Magias do Jogador"
+}
+```
 ------------------
-#### Mesa
+## MESA
 
-* Criar mesa
+| Método | Endpoint       | Descrição               |
+| ------ | -------------- | ----------------------- |
+| GET    | `/table`       | Listar Todas as Mesas  |
+| GET    | `/table/id`    | Listar Mesa por ID     |
+| POST   | `/table`       | Criar uma Mesa          |
 
-* Buscar mesa por id
+### Parâmetros de Consulta para Criar uma Mesa
 
+- `master_id` - ID do mestre
+
+Corpo da requisição:
+
+```json
+{
+    "name": "Nome da Mesa"
+}
+```
 ---------------
-#### Room
+## ROOM
 
-* Criar room
+| Método | Endpoint    | Descrição                    |
+| ------ | ----------- | ---------------------------- |
+| GET    | `/room`     | Listar Todas as Salas       |
+| POST   | `/room`     | Criar uma Sala              |
 
-* Buscar room por id
+### Parâmetros de Consulta para Criar uma Sala
 
+- `table_id` - ID da mesa
+- `user_id` - ID do usuário
+- `sheet_id` - ID da ficha
 
+Corpo da requisição:
 
-
+```json
+{
+}
+```
