@@ -14,9 +14,9 @@ public class RpgTable {
     @Column(name = "name")
     String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rpgTable", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rpgTable", cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private List<Room> rooms;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     @JoinColumn(name = "user_id")
     @JsonIgnore
     private User user;

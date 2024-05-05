@@ -19,11 +19,11 @@ public class User {
     String name;
     String password;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private List<RpgTable> rpgTableList;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private List<Room> rooms;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private List<Sheet> sheets;
 
     public User() {

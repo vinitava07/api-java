@@ -11,11 +11,11 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     Integer id;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "user_id")
     @JsonIgnore
     User user;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "table_id")
     @JsonIgnore
     RpgTable rpgTable;

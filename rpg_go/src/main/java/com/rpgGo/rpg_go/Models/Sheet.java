@@ -18,7 +18,7 @@ public class Sheet {
     int playerLevel;
     String spells;
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     @JoinColumn(name = "user_id")
     User user;
     @JsonIgnore
