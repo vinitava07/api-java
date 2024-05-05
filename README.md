@@ -69,7 +69,7 @@ Corpo da requisição:
 | ------ | -------------- | ----------------------- |
 | GET    | `/table`       | Listar Todas as Mesas  |
 | GET    | `/table/id`    | Listar Mesa por ID     |
-| POST   | `/table`       | Criar uma Mesa          |
+| POST   | `/table?master_id=xx`       | Criar uma Mesa          |
 
 ### Parâmetros de Consulta para Criar uma Mesa
 
@@ -88,7 +88,7 @@ Corpo da requisição:
 | Método | Endpoint    | Descrição                    |
 | ------ | ----------- | ---------------------------- |
 | GET    | `/room`     | Listar Todas as Salas       |
-| POST   | `/room`     | Criar uma Sala              |
+| POST   | `/room?table_id=xx&user_id=xx&sheet_id=xx`     | Criar uma Sala              |
 
 ### Parâmetros de Consulta para Criar uma Sala
 
