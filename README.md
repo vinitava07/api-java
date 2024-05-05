@@ -54,7 +54,7 @@ Corpo da requisição:
 
 ```json
 {
-    "id": *Id do usuário em caso de PUT*,
+    "id": *Id da ficha em caso de PUT*,
     "name": "Nome do Usuário",
     "playerClass": "Classe do Jogador",
     "race": "Raça do Jogador",
