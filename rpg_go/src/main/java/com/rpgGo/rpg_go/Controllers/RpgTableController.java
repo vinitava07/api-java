@@ -34,16 +34,10 @@ public class RpgTableController {
     }
 
     @PostMapping
-    public ResponseEntity<RpgTable> createTable(@RequestParam(name = "master_id", required = true) Integer masterId, @RequestBody(required = true) RpgTable table) {
-        if (userRepository.existsById(masterId)) {
-            User userTemp = userRepository.getById((masterId));
-
-            table.setUser(userTemp);
-            tableRepository.save(table);
-            return ResponseEntity.status(HttpStatus.CREATED).body(table);
-
-        }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+    public ResponseEntity<RpgTable> createRpgTable(@RequestParam(name = "master_id", required = true) Integer master_id, @RequestBody RpgTable rpgTable) {
+        User userTemp = userRepository.getById(master_id);
+        rpgTable.setUser(userTemp);
+        return ResponseEntity.status(HttpStatus.CREATED).body(tableRepository.save(rpgTable));
     }
 
 

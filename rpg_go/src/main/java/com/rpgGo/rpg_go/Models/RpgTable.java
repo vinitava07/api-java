@@ -10,18 +10,19 @@ import java.util.List;
 public class RpgTable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id")
     Integer id;
-    @Column(name = "name")
+
     String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rpgTable", cascade={CascadeType.PERSIST,CascadeType.REMOVE})
-    private List<Room> rooms;
-    @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
-    @JoinColumn(name = "user_id")
     @JsonIgnore
-    private User user;
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinColumn(name = "user_id")
+    User user;
 
-    Integer masterId;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rpgTable", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private List<Room> rooms;
+
 
     public List<Room> getRooms() {
         return rooms;

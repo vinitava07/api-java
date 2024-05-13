@@ -27,7 +27,7 @@ user_id integer references rpg_go.user(id)
 create table if not exists rpg_go.table (
 
 id integer primary key,
-name varchar(255) UNIQUE,
+name varchar(255),
 master_id integer references rpg_go.user(id)
 
 );

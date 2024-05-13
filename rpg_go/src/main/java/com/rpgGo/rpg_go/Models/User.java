@@ -42,22 +42,19 @@ public class User {
     }
 
     public List<RpgTable> getRpgTableList() {
-        if (this.rpgTableList != null) {
+        if (rpgTableList != null) {
             List<RpgTable> tmpList = new ArrayList<>();
             RpgTable tmpTable = new RpgTable();
-            for (RpgTable table : this.rpgTableList) {
+            for (RpgTable table : rpgTableList) {
                 tmpTable.setUser(table.getUser());
                 tmpTable.setId(table.getId());
                 tmpTable.setName(table.getName());
                 tmpList.add(tmpTable);
+                tmpTable = new RpgTable();
             }
             return tmpList;
         }
         return null;
-    }
-
-    public void setListRpgTable(List<RpgTable> rpgTableList) {
-        this.rpgTableList = rpgTableList;
     }
 
     public void setId(Integer id) {

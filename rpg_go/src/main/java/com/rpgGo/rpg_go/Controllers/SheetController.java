@@ -44,7 +44,6 @@ public class SheetController {
         User userTemp = userRepository.getById(user_id);
         sheet.setUser(userTemp);
         return ResponseEntity.status(HttpStatus.CREATED).body(sheetRepository.save(sheet));
-
     }
 
     @DeleteMapping("/{id}")
