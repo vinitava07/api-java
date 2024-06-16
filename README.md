@@ -54,12 +54,26 @@ Corpo da requisição:
 
 ```json
 {
-    "id": *Id da ficha em caso de PUT*,
-    "name": "Nome do Usuário",
-    "playerClass": "Classe do Jogador",
-    "race": "Raça do Jogador",
-    "playerLevel": "Nível do Jogador, INT",
-    "spells": "Magias do Jogador"
+    "id": "*Id da ficha em caso de PUT*",
+    "name": "Nome do usuário",
+    "playerClass": "Classe do jogador",
+    "race": "Raça do jogador",
+    "playerLevel": 1,
+    "classArmor": 1,
+    "movement": 1,
+    "health": 1,
+    "strength": 1,
+    "intelligence": 1,
+    "dexterity": 1,
+    "constitution": 1,
+    "wisdom": 1,
+    "charisma": 1,
+    "attack": "Coleção de ataques do jogador",
+    "spells": "Spells do jogador",
+    "inventory": "Inventário do jogador",
+    "skills": "Skills do jogador",
+    "features": "Features do Jogador",
+    "tools": "Tools do jogador"
 }
 ```
 ------------------
