@@ -7,12 +7,7 @@
     <list default="true" id="2d06324f-a728-4ad5-98ac-5e74293fb596" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpg_go/rpg-go-db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/rpg_go/rpg-go-db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Controllers/RpgTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Controllers/RpgTableController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Controllers/SheetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Controllers/SheetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Models/RpgTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Models/RpgTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Models/Sheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Models/Sheet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Repository/RpgTableRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpg_go/src/main/java/com/rpgGo/rpg_go/Repository/RpgTableRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpg_go/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rpg_go/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,21 +52,21 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.RpgGoApplication.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/vinicius/Documents/api-java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.RpgGoApplication.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/vinicius/Documents/api-java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="AZURE_FUNCTION_SUPPORT" factoryName="Run Functions">
       <option name="appName" />
