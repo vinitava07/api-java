@@ -20,7 +20,9 @@ public class Sheet {
     String tools;
     String spells;
     int playerLevel;
+    int armorClass;
     int health;
+    int movement;
     int strength;
     int intelligence;
     int dexterity;
@@ -97,6 +99,14 @@ public class Sheet {
 
     public String getTools() {
         return tools;
+    }
+
+    public int getArmorClass() {
+        return armorClass;
+    }
+
+    public int getMovement() {
+        return movement;
     }
 
     public User getUser() {
