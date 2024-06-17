@@ -1,5 +1,6 @@
 # API - RPG: GO!
 > API em java utilizando SpringBoot JPA e POSTGRESQL
+Link do repositório: https://github.com/vinitava07/RPG-GO
 
 ## CRUD criado para o backend do trabalho de Dev Mobile
 O sistema consiste na criação de usuários, criação de fichas de RPG, criação de mesas e criação de salas para conectar usuários a uma mesa
